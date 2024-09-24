@@ -15,14 +15,14 @@ def get_the_cheapest_big_mac_price_by_year(year):
         df[df.date.str.contains(year)].dollar_price.idxmin()
     ]
 
-    print(f'{price[3]}({price.iso_a3}): ${round(price.dollar_price,2)}')
+    return f'{price[3]}({price.iso_a3}): ${round(price.dollar_price,2)}'
 
 def get_the_most_expensive_big_mac_price_by_year(year):
     price = df.loc[
         df[df.date.str.contains(year)].dollar_price.idxmax()
     ]
 
-    print(f'{price[3]}({price.iso_a3}): ${round(price.dollar_price,2)}')
+    return f'{price[3]}({price.iso_a3}): ${round(price.dollar_price,2)}'
 
 
 if __name__ == "__main__":
