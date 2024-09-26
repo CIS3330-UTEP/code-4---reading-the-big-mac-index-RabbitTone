@@ -7,7 +7,9 @@ df = pd.read_csv(big_mac_file)              # Convert csv to a dataframe
 
 # return mean value in the specific year of the big mac in dollars ('dollar_pice' column)
 def get_big_mac_price_by_year(year,country_code):
-    return round(df[df.date.str.contains(year)].dollar_price.mean(), 2)
+    return round(df.loc[
+            (df.date.str.contains(year)) & (df.iso_a3 == country_code.upper())
+        ].dollar_price.mean(), 2)
 
 '''
 The function receives the country_code in lower case
