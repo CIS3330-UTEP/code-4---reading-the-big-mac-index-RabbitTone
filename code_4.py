@@ -7,7 +7,7 @@ df = pd.read_csv(big_mac_file)  # Convert csv to a dataframe
 
 # return mean value in the specific year of the big mac in dollars ('dollar_pice' column)
 def get_big_mac_price_by_year(year, country_code):
-    return round(df.loc[(df.date.str.contains(year)) & (df.iso_a3 == country_code.upper())].dollar_price.mean(), 2)
+    return round(df.loc[(df.date.str.contains(str(year))) & (df.iso_a3 == country_code.upper())].dollar_price.mean(), 2)
 
 
 """
@@ -29,7 +29,7 @@ The function should return the following output from the place that has the chea
 
 
 def get_the_cheapest_big_mac_price_by_year(year):
-    price = df.loc[df[df.date.str.contains(year)].dollar_price.idxmin()]
+    price = df.loc[df[df.date.str.contains(str(year))].dollar_price.idxmin()]
 
     print(f"{price[3]}({price.iso_a3}): ${round(price.dollar_price,2)}")
 
@@ -42,13 +42,13 @@ The function should return the following output from the place that has the most
 
 
 def get_the_most_expensive_big_mac_price_by_year(year):
-    price = df.loc[df[df.date.str.contains(year)].dollar_price.idxmax()]
+    price = df.loc[df[df.date.str.contains(str(year))].dollar_price.idxmax()]
 
     print(f"{price[3]}({price.iso_a3}): ${round(price.dollar_price,2)}")
 
 
 if __name__ == "__main__":
-    print(get_big_mac_price_by_year("2008", "bra"))
+    print(get_big_mac_price_by_year(2008, "bra"))
     print(get_big_mac_price_by_country("bra"))
     get_the_cheapest_big_mac_price_by_year("2008")
     get_the_most_expensive_big_mac_price_by_year("2003")
