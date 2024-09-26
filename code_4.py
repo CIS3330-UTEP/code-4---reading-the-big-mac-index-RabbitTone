@@ -31,7 +31,7 @@ The function should return the following output from the place that has the chea
 def get_the_cheapest_big_mac_price_by_year(year):
     price = df.loc[df[df.date.str.contains(str(year))].dollar_price.idxmin()]
 
-    print(f"{price[3]}({price.iso_a3}): ${round(price.dollar_price,2)}")
+    return f"{price[3]}({price.iso_a3}): ${round(price.dollar_price,2)}"
 
 
 """
@@ -44,11 +44,11 @@ The function should return the following output from the place that has the most
 def get_the_most_expensive_big_mac_price_by_year(year):
     price = df.loc[df[df.date.str.contains(str(year))].dollar_price.idxmax()]
 
-    print(f"{price[3]}({price.iso_a3}): ${round(price.dollar_price,2)}")
+    return f"{price[3]}({price.iso_a3}): ${round(price.dollar_price,2)}"
 
 
 if __name__ == "__main__":
     print(get_big_mac_price_by_year(2008, "bra"))
     print(get_big_mac_price_by_country("bra"))
-    get_the_cheapest_big_mac_price_by_year("2008")
-    get_the_most_expensive_big_mac_price_by_year("2003")
+    print(get_the_cheapest_big_mac_price_by_year(2008))
+    print(get_the_most_expensive_big_mac_price_by_year(2003))
