@@ -29,7 +29,7 @@ def get_the_cheapest_big_mac_price_by_year(year):
         df[df.date.str.contains(year)].dollar_price.idxmin()
     ]
 
-    return f'{price[3]}({price.iso_a3}): ${round(price.dollar_price,2)}'
+    print(f'{price[3]}({price.iso_a3}): ${round(price.dollar_price,2)}')
 
 
 '''
@@ -42,11 +42,11 @@ def get_the_most_expensive_big_mac_price_by_year(year):
         df[df.date.str.contains(year)].dollar_price.idxmax()
     ]
 
-    return f'{price[3]}({price.iso_a3}): ${round(price.dollar_price,2)}'
+    print(f'{price[3]}({price.iso_a3}): ${round(price.dollar_price,2)}')
 
 
 if __name__ == "__main__":
     print(get_big_mac_price_by_year('2008','bra'))
     print(get_big_mac_price_by_country('bra'))
-    print(get_the_cheapest_big_mac_price_by_year('2008'))
-    print(get_the_most_expensive_big_mac_price_by_year('2003'))
+    get_the_cheapest_big_mac_price_by_year('2008')
+    get_the_most_expensive_big_mac_price_by_year('2003')
