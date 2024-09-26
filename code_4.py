@@ -1,9 +1,6 @@
 import pandas as pd
 
-big_mac_file = "./big-mac-full-index.csv"
-
-df = pd.read_csv(big_mac_file)  # Convert csv to a dataframe
-
+df = pd.read_csv("./big-mac-full-index.csv")  # Convert csv to a dataframe
 
 # return mean value in the specific year of the big mac in dollars ('dollar_pice' column)
 def get_big_mac_price_by_year(year, country_code):
